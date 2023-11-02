@@ -17,3 +17,16 @@ class ReactView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+        
+        
+class PersonView(APIView):
+    def get(self, request):
+        output = [{"name": output.name}
+                    for output in Person.objects.all()]
+        return Response(output)
+
+    def post(self, request):
+        serializer = ReactSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)

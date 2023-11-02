@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-from backend.views import ReactView
+from django.urls import re_path as url
+from backend.views import ReactView, PersonView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', ReactView.as_view(), name="anything")
+    path('', ReactView.as_view(), name="React"),
+    path('person/', PersonView.as_view(), name="person"),
 ]
